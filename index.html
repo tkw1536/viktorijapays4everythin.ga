@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/css/materialize.min.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+    <title>Viktorija pays for everything</title>
+
+    <script type='text/javascript'>
+    var end = new Date('04/24/2022 2:00 AM');
+
+    var _second = 1000;
+    var _minute = _second * 60;
+    var _hour = _minute * 60;
+    var _day = _hour * 24;
+    var timer;
+
+    function showRemaining() {
+        var now = new Date();
+        var distance = end - now;
+        if (distance < 0) {
+
+            clearInterval(timer);
+            document.getElementById('countdown').innerHTML = 'EXPIRED!';
+
+            return;
+        }
+        var days = Math.floor(distance / _day);
+        var hours = Math.floor((distance % _day) / _hour);
+        var minutes = Math.floor((distance % _hour) / _minute);
+        var seconds = Math.floor((distance % _minute) / _second);
+
+        document.getElementById('countdown').innerHTML = days + ' days, ';
+        document.getElementById('countdown').innerHTML += hours + ' hours, ';
+        document.getElementById('countdown').innerHTML += minutes + ' minutes, ';
+        document.getElementById('countdown').innerHTML += seconds + ' seconds';
+    }
+
+    timer = setInterval(showRemaining, 1000);
+    </script>
+  </head>
+  <body>
+    <div class="container">
+        <h1 class="center-align">Viktorija pays for everything in</h1>
+        <h3 class="center-align" id='countdown'></h3>
+    </div>
+ </body>
+</html>
